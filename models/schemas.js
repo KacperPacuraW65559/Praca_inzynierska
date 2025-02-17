@@ -97,7 +97,9 @@ Question.hasMany(Answer, { foreignKey: "questionId" });
 Answer.belongsTo(Question, { foreignKey: "questionId" });
 
 // Reset bazy danych i utworzenie rekordów i tabel od nowa
-await sequelize.sync( { force: true } );
+//await sequelize.sync( { force: true } );
+
+await sequelize.sync( {alter: true} );
 
 export {
     User,
