@@ -1,0 +1,80 @@
+<%- include("../partials/head", { title: course.title }) %>
+<body class="course-details-page">
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <div class="card-body">
+                <h1 class="text-center mb-3 text-primary fw-bold"><%= course.title %></h1>
+                <p class="text-muted text-center"><%= course.description || "Brak opisu" %></p>
+
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item"><strong>Poziom trudności:</strong> <%= course.difficulty %></li>
+                    <li class="list-group-item">
+                        <strong>Nauczyciel:</strong> 
+                        <% if (course.teacher) { %>
+                            <%= course.teacher.name %> <%= course.teacher.surname %> (<%= course.teacher.email %>)
+                        <% } else { %>
+                            <span class="text-muted">Nie przypisano</span>
+                        <% } %>
+                    </li>
+                    <li class="list-group-item"><strong>Liczba lekcji:</strong> <%= lessonCount %></li>
+                </ul>
+
+                <h4 class="text-secondary fw-bold">Lekcje:</h4>
+                <% if (course.Lessons && course.Lessons.length > 0) { %>
+                    <ul class="list-group">
+                        <% course.Lessons.forEach(lesson => { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <%= lesson.title %>
+                                <a href="/lessons/lesson/<%= lesson.id %>" class="btn btn-sm btn-outline-primary">Zobacz lekcję</a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p class="text-muted">Brak dostępnych lekcji.</p>
+                <% } %>
+
+                <div class="d-flex justify-content-center gap-3 mt-4 align-items-center">
+                    <a href="/courses" class="btn btn-secondary btn-sm d-flex align-items-center justify-content-center flex-shrink-0">
+                        Wstecz
+                    </a>
+
+                    <% if (user) { %>
+                        <% if (user.role === "admin" || user.role === "teacher") { %>
+                            <a href="/courses/<%= course.id %>/edit" class="btn btn-warning btn-sm d-flex align-items-center justify-content-center flex-shrink-0">
+                                Edytuj kurs
+                            </a>
+                        <% } else { %>
+                            <% if (userCourses.some(uc => uc.id === course.id)) { %>
+                                <span class="badge bg-success text-white d-flex align-items-center justify-content-center px-3 py-2">
+                                    Zapisany
+                                </span>
+                            <% } else { %>
+                                <form action="/courses/<%= course.id %>/enroll" method="post" class="m-0">
+                                    <button class="btn btn-primary btn-sm d-flex align-items-center justify-content-center flex-shrink-0" type="submit">
+                                        Zapisz się
+                                    </button>
+                                </form>
+                            <% } %>
+                        <% } %>
+                    <% } else { %>
+                        <a href="/login" class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center flex-shrink-0">
+                            Zaloguj się, aby się zapisać
+                        </a>
+                    <% } %>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<%- include("../partials/head", { title: "Biblioteka Akordów i Skal" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-3">
+        <div class="text-center">
+            <h1 class="text-primary fw-bold">Biblioteka Akordów i Skal</h1>
+            <p class="text-muted">Odkryj szeroką gamę akordów i skal, aby rozwijać swoje umiejętności gry na gitarze.</p>
+        </div>
+
+        <% if (user && (user.role === "admin" || user.role === "teacher")) { %>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="/library/chords/add" class="btn btn-primary admin-btn">Dodaj Nowy Akord</a>
+                <a href="/library/scales/add" class="btn btn-primary admin-btn">Dodaj Nową Skalę</a>
+            </div>
+        <% } %>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm library-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary fw-bold">Akordy</h5>
+                        <p class="card-text text-muted">Przeglądaj bibliotekę akordów przygotowaną specjalnie dla Ciebie.</p>
+                        <a href="/library/chords" class="btn btn-info w-100 library-btn">Przeglądaj Akordy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow-sm library-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary fw-bold">Skale</h5>
+                        <p class="card-text text-muted">Odkryj skale do improwizacji, ćwiczeń i kompozycji.</p>
+                        <a href="/library/scales" class="btn btn-info w-100 library-btn">Przeglądaj Skale</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

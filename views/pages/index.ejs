@@ -1,0 +1,112 @@
+<%- include("partials/head", { title: "Strona główna" }) %>
+<body class="homepage">
+
+    <%- include("partials/navbar", { user }) %>
+    
+    <header class="hero-section">
+        <div class="container text-center text-dark">
+            <h1 class="fw-bold">Odkryj świat gitary z Akademią Gitarzysty!</h1>
+            <img src="/resources/images/Logo_main.png" alt="Logo Learn Guitar" class="homepage-logo img-fluid mb-3 mt-2">
+            <p class="lead">Dołącz do tysięcy użytkowników uczących się gry na gitarze w naszym interaktywnym systemie.</p>
+            <a href="/register" class="btn btn-lg btn-primary mt-2">Rozpocznij naukę</a>
+        </div>
+    </header>
+
+    <section class="features-section">
+        <div class="container text-center">
+            <h2 class="text-primary">Co oferujemy?</h2>
+            <p class="lead text-muted">Najlepsze narzędzia do nauki gry na gitarze w jednym miejscu!</p>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <i class="fas fa-book-open fa-3x text-info"></i>
+                    <h4 class="mt-3">Interaktywne kursy</h4>
+                    <p>Stopniowo zdobywaj wiedzę dzięki kursom dostosowanym do każdego poziomu zaawansowania.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-music fa-3x text-warning"></i>
+                    <h4 class="mt-3">Biblioteka akordów i skal</h4>
+                    <p>Przeglądaj setki akordów i skal - idealne narzędzie do ćwiczeń i komponowania.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-chalkboard-teacher fa-3x text-success"></i>
+                    <h4 class="mt-3">Profesjonalni nauczyciele</h4>
+                    <p>Ucz się od doświadczonych gitarzystów, którzy pomogą Ci rozwinąć umiejętności.</p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <i class="fas fa-unlock-alt fa-3x text-secondary"></i>
+                    <h4 class="mt-3">Pełny dostęp po zalogowaniu</h4>
+                    <p>Zaloguj się, aby mieć nieograniczony dostęp do wszystkich kursów i materiałów.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-chart-line fa-3x text-success"></i>
+                    <h4 class="mt-3">Śledzenie postępów</h4>
+                    <p>Monitoruj swój rozwój dzięki szczegółowym statystykom i analizom postępów.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-bookmark fa-3x text-primary"></i>
+                    <h4 class="mt-3">Dodawanie zakładek</h4>
+                    <p>Zapisuj ulubione lekcje, aby szybko wrócić do nich w każdej chwili.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section bg-light py-3">
+        <div class="container">
+            <h2 class="text-center text-primary">Co mówią nasi użytkownicy?</h2>
+            
+            <div id="testimonialsCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card text-center">
+                            <p class="lead">"Ta aplikacja całkowicie zmieniła moją naukę gry na gitarze! Intuicyjne lekcje i świetne materiały dodatkowe."</p>
+                            <footer class="blockquote-footer">Jan Kowalski</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center">
+                            <p class="lead">"Najlepsza aplikacja dla gitarzystów! Biblioteka akordów jest bardzo pomocna."</p>
+                            <footer class="blockquote-footer">Marek Nowak</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center">
+                            <p class="lead">"Dzięki tej stronie mogłem rozwinąć swoje umiejętności i lepiej zrozumieć teorię, z którą miałem problemy."</p>
+                            <footer class="blockquote-footer">Filip Szcześniak</footer>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Poprzedni</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Następny</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section py-2 text-center">
+        <div class="container">
+            <h2>Zacznij swoją muzyczną podróż już teraz!</h2>
+            <p class="lead">Dołącz do naszej społeczności i rozwijaj swoje umiejętności gry na gitarze. Po zalogowaniu otrzymasz pełen dostęp do interaktywnych materiałów, śledzenia postępów oraz możliwość dodawania zakładek do ulubionych lekcji.</p>
+            <div class="text-center mt-3">
+                <a href="/register" class="btn btn-lg btn-light me-3">Zarejestruj się teraz</a>
+                <a href="/login" class="btn btn-lg btn-outline-light">Zaloguj się</a>
+            </div>
+        </div>
+    </section>
+
+    <%- include("partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+</body>
+</html>

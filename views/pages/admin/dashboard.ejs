@@ -1,0 +1,99 @@
+<%- include("../partials/head", { title: "Panel Administratora" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="text-center text-primary mb-4">Witaj w Panelu Administratora</h3>
+
+                        <% if (user) { %>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="card shadow-sm h-100 d-flex">
+                                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                            <h5 class="card-title text-primary">Informacje o Administratorze</h5>
+                                            <p class="card-text"><strong>Imię i Nazwisko:</strong> <%= user.name %> <%= user.surname %></p>
+                                            <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
+                                            <p class="card-text"><strong>Rola:</strong> <%= user.role %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card shadow-sm h-100 d-flex">
+                                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                            <h5 class="card-title text-primary">Szybkie Akcje</h5>
+                                            <div class="w-100">
+                                                <a href="/profile/view" class="btn btn-primary mb-2 w-100">Edytuj Profil</a>
+                                                <a href="/admin/users" class="btn btn-secondary mb-2 w-100">Zarządzaj Użytkownikami</a>
+                                                <a href="/courses" class="btn btn-secondary mb-2 w-100">Zarządzaj Kursami</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Zarządzanie Użytkownikami</h5>
+                                        <p class="card-text">Zarządzaj wszystkimi zarejestrowanymi użytkownikami w systemie.</p>
+                                        <a href="/admin/users" class="btn btn-info w-100">Przejdź do Zarządzania Użytkownikami</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Zarządzanie Kursami</h5>
+                                        <p class="card-text">Twórz, edytuj i usuwaj kursy oferowane użytkownikom.</p>
+                                        <a href="/courses" class="btn btn-info w-100">Przejdź do Zarządzania Kursami</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Przeglądaj Opinie</h5>
+                                        <p class="card-text">Zobacz najnowsze opinie przesłane przez użytkowników.</p>
+                                        <a href="/admin/feedback" class="btn btn-warning w-100">Przejdź do Opinii</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Zarządzanie Plikami</h5>
+                                        <p class="card-text">Prześlij, edytuj lub usuń obrazy wykorzystywane w kursach.</p>
+                                        <a href="/manage-files" class="btn btn-success w-100">Przejdź do Zarządzania Plikami</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a href="/dashboard" class="btn btn-secondary">Powrót do Panelu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer", { title: "Panel Administratora" }) %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

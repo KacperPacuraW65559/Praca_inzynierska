@@ -1,0 +1,20 @@
+<%- include("partials/head", { title: "Brak dostępu" }) %>
+<body class="access-page">
+    <%- include("partials/navbar", { user }) %>
+
+    <div class="container text-center d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 text-danger fw-bold">403 - Brak dostępu</h1>
+        <p class="lead">Nie masz uprawnień, aby uzyskać dostęp do tej strony.</p>
+        <img src="/resources/images/Access_denied.png" alt="Brak dostępu" class="rounded img-fluid my-4 shadow-lg" style="max-width: 400px;">
+        <p>Jeśli uważasz, że to pomyłka, skontaktuj się z administratorem.</p>
+        <a href="/" class="btn btn-lg btn-primary mt-4">Powrót na stronę główną</a>
+    </div>
+
+    <%- include("partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<%- include("../partials/head", { title: "Wyniki Quizu" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-body text-center">
+                        <h1 class="text-primary mb-3">Wyniki Quizu</h1>
+                        <h2 class="text-success">Twój wynik: <%= score %> / <%= totalQuestions %></h2>
+                        <p class="text-muted">Zdobyłeś <strong><%= percentage %>%</strong> punktów.</p>
+
+                        <% if (percentage === 100) { %>
+                            <p class="text-success fw-bold">Gratulacje! Odpowiedziałeś poprawnie na wszystkie pytania.</p>
+                        <% } else if (percentage >= 70) { %>
+                            <p class="text-success">Dobra robota! Twoja wiedza jest na wysokim poziomie.</p>
+                        <% } else { %>
+                            <p class="text-danger">Nie przejmuj się! Możesz spróbować ponownie i poprawić wynik.</p>
+                        <% } %>
+
+                        <div class="mt-4">
+                            <a href="/quizzes" class="btn btn-primary w-50">Powrót do listy quizów</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

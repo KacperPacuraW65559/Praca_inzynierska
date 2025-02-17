@@ -1,0 +1,65 @@
+<%- include("../partials/head", { title: scale ? "Edytuj Skalę" : "Dodaj Skalę" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h1 class="text-center text-primary mb-4"><%= scale ? "Edytuj Skalę" : "Dodaj Nową Skalę" %></h1>
+
+                        <form action="<%= scale ? `/library/scales/${scale.id}/edit` : '/library/scales/add' %>" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nazwa Skali:</label>
+                                <input type="text" id="name" name="name" class="form-control" value="<%= scale ? scale.name : '' %>" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="imagePath" class="form-label">Wybierz obraz:</label>
+                                <select id="imagePath" name="imagePath" class="form-select" required>
+                                    <% images.forEach(image => { %>
+                                        <option value="/resources/images/<%= image %>"
+                                            <% if (scale && scale.imagePath === "/resources/images/" + image) { %> selected <% } %>>
+                                            <%= image %>
+                                        </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Opis:</label>
+                                <textarea id="description" name="description" class="form-control" rows="3"><%= scale ? scale.description : '' %></textarea>
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary w-50"><%= scale ? "Zapisz Zmiany" : "Dodaj Skalę" %></button>
+                            </div>
+                        </form>
+
+                        <div class="text-center mt-3">
+                            <a href="/library/scales" class="btn btn-secondary w-50">Anuluj</a>
+                        </div>
+
+                        <% if (scale) { %>
+                            <div class="text-center mt-0">
+                                <form action="/library/scales/<%= scale.id %>/delete" method="post"
+                                    onsubmit="return confirm('Czy na pewno chcesz usunąć tę skalę?');">
+                                    <button type="submit" class="btn btn-danger w-50">Usuń Skalę</button>
+                                </form>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

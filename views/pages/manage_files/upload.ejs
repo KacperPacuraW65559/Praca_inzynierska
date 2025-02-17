@@ -1,0 +1,52 @@
+<%- include("../partials/head", { title: "Prześlij plik" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5 d-flex flex-column align-items-center">
+        <div class="card shadow-lg p-4 text-center" style="max-width: 500px;">
+            <div class="card-body">
+                <h1 class="text-primary">
+                    <i class="bi bi-cloud-upload-fill"></i> Prześlij plik
+                </h1>
+                <p class="text-muted">Dodaj obrazy do lekcji lub zasobów bibliotecznych.</p>
+
+                <form action="/manage-files/upload" method="post" enctype="multipart/form-data" class="mt-3">
+                    <div id="imagePreviewContainer" class="mb-3 d-none">
+                        <img id="imagePreview" src="#" alt="Podgląd obrazu" class="img-thumbnail" style="max-width: 100%; max-height: 200px;">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Wybierz obraz:</label>
+                        <input type="file" id="image" name="image" class="form-control" accept="image/*" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-upload"></i> Prześlij
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreviewContainer').classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

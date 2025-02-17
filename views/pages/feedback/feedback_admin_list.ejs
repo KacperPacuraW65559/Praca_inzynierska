@@ -1,0 +1,39 @@
+<%- include("../partials/head", { title: "Feedback" }) %>
+<body class="feedback-page">
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Opinia Użytkowników</h1>
+
+        <% if (feedbacks.length > 0) { %>
+            <ul class="list-group">
+                <% feedbacks.forEach(feedback => { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <div class="d-flex flex-column flex-md-row gap-2 align-items-start">
+                            <strong class="text-primary"><%= feedback.subject %></strong>
+                            <span class="text-muted small"> od <%= feedback.User.name %> (<%= feedback.User.email %>)</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <% if (feedback.adminReply && feedback.adminReply.trim()) { %>
+                                <span class="badge bg-success">Odpowiedziano</span>
+                            <% } else { %>
+                                <span class="badge bg-secondary">Brak odpowiedzi</span>
+                            <% } %>
+                            <a href="/admin/feedback/<%= feedback.id %>" class="btn btn-primary btn-sm">Szczegóły</a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p class="text-center text-muted">Brak opinii do wyświetlenia.</p>
+        <% } %>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+        
+</body>
+</html>

@@ -1,0 +1,114 @@
+<%- include("../partials/head", { title: "Edytuj Lekcję" }) %>
+<body class="lesson-edit-page">
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card lesson-card shadow-lg p-4">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4 text-primary fw-bold">Edytuj Lekcję</h1>
+
+                        <form action="/lessons/lesson/<%= lesson.id %>/edit" method="post" class="g-3">
+                            <div class="mb-3">
+                                <label for="title" class="form-label fw-bold">Tytuł Lekcji:</label>
+                                <input type="text" id="title" name="title" class="form-control" value="<%= lesson.title %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="intro" class="form-label fw-bold">Wprowadzenie:</label>
+                                <textarea id="intro" name="intro" class="form-control auto-expand" rows="5" required><%= lesson.intro %></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label fw-bold">Treść:</label>
+                                <textarea id="content" name="content" class="form-control auto-expand" rows="5" required><%= lesson.content %></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="example_1" class="form-label fw-bold">Ścieżka Przykładu 1:</label>
+                                        <select id="example_1" name="example_1" class="form-select">
+                                            <option value="" <%= !lesson.example_1 ? "selected" : "" %>>Brak</option>
+                                            <% images.forEach(image => { %>
+                                                <option value="/resources/images/<%= image %>" <%= lesson.example_1 === `/resources/images/${image}` ? "selected" : "" %>>
+                                                    <%= image %>
+                                                </option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="example_1_description" class="form-label">Opis Przykładu 1:</label>
+                                        <textarea id="example_1_description" name="example_1_description" class="form-control auto-expand" rows="5"><%= lesson.example_1_description || '' %></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="example_2" class="form-label fw-bold">Ścieżka Przykładu 2:</label>
+                                        <select id="example_2" name="example_2" class="form-select">
+                                            <option value="" <%= !lesson.example_2 ? "selected" : "" %>>Brak</option>
+                                            <% images.forEach(image => { %>
+                                                <option value="/resources/images/<%= image %>" <%= lesson.example_2 === `/resources/images/${image}` ? "selected" : "" %>>
+                                                    <%= image %>
+                                                </option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="example_2_description" class="form-label">Opis Przykładu 2:</label>
+                                        <textarea id="example_2_description" name="example_2_description" class="form-control auto-expand" rows="5"><%= lesson.example_2_description || '' %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="summary" class="form-label fw-bold">Podsumowanie:</label>
+                                <textarea id="summary" name="summary" class="form-control auto-expand" rows="5" required><%= lesson.summary %></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="order_number" class="form-label fw-bold">Numer Porządkowy:</label>
+                                <input type="number" id="order_number" name="order_number" class="form-control" value="<%= lesson.order_number %>" required>
+                            </div>
+
+                            <div class="d-flex flex-column gap-3">
+                                <button type="submit" class="btn btn-primary">Zapisz Zmiany</button>
+                                <a href="/lessons/lesson/<%= lesson.id %>" class="btn btn-secondary">Anuluj</a>
+                            </div>
+                        </form>
+
+                        <div class="mt-0">
+                            <form action="/lessons/<%= lesson.id %>/delete" method="post" onsubmit="return confirm('Czy na pewno chcesz usunąć tę lekcję?');">
+                                <button type="submit" class="btn btn-danger w-100">Usuń Lekcję</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function autoExpand(textarea) {
+                textarea.style.height = "auto"; 
+                textarea.style.height = textarea.scrollHeight + "px"; 
+            }
+
+            document.querySelectorAll(".auto-expand").forEach(textarea => {
+                textarea.addEventListener("input", function () {
+                    autoExpand(this);
+                });
+
+                autoExpand(textarea);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+        
+</body>
+</html>

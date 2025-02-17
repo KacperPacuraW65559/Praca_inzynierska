@@ -1,0 +1,158 @@
+<%- include("../partials/head", { title: lesson.title }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">>
+        <% if (course) { %>
+            <div class="text-start mb-3">
+                <a href="/courses/<%= course.id %>" class="btn btn-outline-primary">
+                    ← Powrót do kursu
+                </a>
+            </div>
+            <h2 class="text-center text-muted mb-3"><%= course.title %></h2>
+        <% } %>
+
+        <h1 class="text-center mb-4"><%= lesson.title %></h1>
+
+        <div class="mb-4">
+            <h3>Wprowadzenie</h3>
+            <p class="lead"><%= lesson.intro %></p>
+        </div>
+
+        <div class="mb-4">
+            <h3>Treść</h3>
+            <p><%- lesson.content %></p>
+        </div>
+
+        <% if (lesson.example_1) { %>
+            <div class="mb-4 text-center">
+                <h4>Przykład 1</h4>
+                <img src="<%= lesson.example_1 %>" alt="Przykład 1" class="img-fluid rounded mx-auto d-block">
+                <p class="mt-3"><%= lesson.example_1_description %></p>
+            </div>
+        <% } %>
+
+        <div class="text-center mt-5 mb-5">
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#metronomeCollapse">
+                🎵 Pokaż / Ukryj Metronom
+            </button>
+        </div>
+        <div class="collapse mb-3" id="metronomeCollapse">
+            <div class="card shadow-sm p-3">
+                <div class="card-body text-center">
+                    <h4 class="text-primary">Metronom</h4>
+                    <label for="tempo" class="form-label small">Tempo (BPM):</label>
+                    <input type="range" id="tempo" min="40" max="200" step="1" value="100" class="form-range">
+                    <input type="number" id="tempoInput" min="40" max="200" step="1" value="100" class="form-control form-control-sm mt-2">
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <button id="startMetronome" class="btn btn-success btn-sm">Start</button>
+                        <button id="stopMetronome" class="btn btn-danger btn-sm">Stop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% if (lesson.example_2) { %>
+            <div class="mt-3 mb-4 text-center">
+                <h4>Przykład 2</h4>
+                <img src="<%= lesson.example_2 %>" alt="Przykład 2" class="img-fluid rounded mx-auto d-block">
+                <p class="mt-3"><%= lesson.example_2_description %></p>
+            </div>
+        <% } %>
+
+        <div class="mb-4">
+            <h3>Podsumowanie</h3>
+            <p class="lead"><%= lesson.summary %></p>
+        </div>
+
+        <% if (user) { %>
+            <div class="mt-5 d-flex justify-content-center">
+                <div class="card shadow-sm" style="width: 100%; max-width: 600px;">
+                    <div class="card-body text-center">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <div>
+                                <% if (userBookmarks.some(bookmark => bookmark.lessonId === lesson.id)) { %>
+                                    <span class="badge bg-success mb-1">Zakładka dodana</span>
+                                    <form action="/lessons/lesson/<%= lesson.id %>/remove-bookmark" method="post">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Usuń Zakładkę</button>
+                                    </form>
+                                <% } else { %>
+                                    <form action="/lessons/lesson/<%= lesson.id %>/add-bookmark" method="post">
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Dodaj Zakładkę</button>
+                                    </form>
+                                <% } %>
+                            </div>
+
+                            <div style="width: 1px; height: 40px; background-color: #e0e0e0;"></div>
+
+                            <div>
+                                <% if (userProgress.some(progress => progress.lessonId === lesson.id)) { %>
+                                    <span class="badge bg-primary mb-1">Ukończona</span>
+                                    <form action="/lessons/lesson/<%= lesson.id %>/remove-progress" method="post">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Oznacz jako Nieukończona</button>
+                                    </form>
+                                <% } else { %>
+                                    <form action="/lessons/lesson/<%= lesson.id %>/add-progress" method="post">
+                                        <button type="submit" class="btn btn-outline-primary btn-sm">Oznacz jako Ukończona</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="d-flex justify-content-between mt-5">
+            <% if (previousLessonId) { %>
+                <a href="/lessons/lesson/<%= previousLessonId %>" class="btn btn-secondary">Poprzednia Lekcja</a>
+            <% } else { %>
+                <span class="btn btn-secondary disabled">Poprzednia Lekcja</span>
+            <% } %>
+
+            <span class="badge bg-secondary badge-centered">Numer Lekcji: <%= lesson.order_number %></span>
+            
+            <% if (nextLessonId) { %>
+                <a href="/lessons/lesson/<%= nextLessonId %>" class="btn btn-secondary">Następna Lekcja</a>
+            <% } else { %>
+                <span class="btn btn-secondary disabled">Następna Lekcja</span>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        const tempoInput = document.getElementById('tempo');
+        const tempoNumberInput = document.getElementById('tempoInput');
+        const startButton = document.getElementById('startMetronome');
+        const stopButton = document.getElementById('stopMetronome');
+        let metronomeInterval;
+
+        tempoInput.addEventListener('input', () => {
+            tempoNumberInput.value = tempoInput.value;
+        });
+
+        tempoNumberInput.addEventListener('input', () => {
+            tempoInput.value = tempoNumberInput.value;
+        });
+
+        startButton.addEventListener('click', () => {
+            const tempo = 60000 / parseInt(tempoInput.value, 10);
+            if (metronomeInterval) clearInterval(metronomeInterval);
+            metronomeInterval = setInterval(() => {
+                new Audio('/resources/audio/metronome_click.wav').play();
+            }, tempo);
+        });
+
+        stopButton.addEventListener('click', () => {
+            if (metronomeInterval) clearInterval(metronomeInterval);
+        });
+    </script>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+        crossorigin="anonymous"></script>
+        
+</body>
+</html>

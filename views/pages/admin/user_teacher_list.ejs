@@ -1,0 +1,73 @@
+<%- include("../partials/head", { title: "Lista Nauczycieli" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="text-center text-primary mb-4">Lista Nauczycieli</h3>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <a href="/users/add" class="btn btn-primary">Dodaj Nowego Nauczyciela</a>
+                            <a href="/admin/dashboard" class="btn btn-secondary">Powrót do Panelu</a>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="table-dark text-center">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Imię i Nazwisko</th>
+                                        <th>Email</th>
+                                        <th>Adres</th>
+                                        <th>Wiek</th>
+                                        <th style="width: 250px;">Akcje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (teachers && teachers.length > 0) { %>
+                                        <% teachers.forEach((teacher, index) => { %>
+                                            <tr class="text-center align-middle">
+                                                <td><%= index + 1 %></td>
+                                                <td><%= teacher.name %> <%= teacher.surname %></td>
+                                                <td><%= teacher.email %></td>
+                                                <td><%= teacher.address || "-" %></td>
+                                                <td><%= teacher.age || "-" %></td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center gap-2">
+                                                        <div class="text-center">
+                                                            <a href="/admin/users/<%= teacher.id %>/view" class="btn btn-info btn-sm">Pokaż</a>
+                                                            <a href="/admin/users/<%= teacher.id %>/edit" class="btn btn-warning btn-sm">Edytuj</a>
+                                                            <form action="/users/<%= teacher.id %>/delete" method="post" class="d-inline"
+                                                                onsubmit="return confirm('Czy na pewno chcesz usunąć tego nauczyciela?');">
+                                                                <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="6" class="text-center text-muted">Nie znaleziono nauczycieli.</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

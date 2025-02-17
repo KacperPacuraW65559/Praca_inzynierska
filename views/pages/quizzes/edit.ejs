@@ -1,0 +1,70 @@
+<%- include("../partials/head", { title: "Edytuj Quiz" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-4">Edytuj Quiz</h1>
+
+                        <form action="/quizzes/<%= quiz.id %>/edit" method="post">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Tytuł Quizu:</label>
+                                <input type="text" class="form-control" id="title" name="title" value="<%= quiz.title %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Opis:</label>
+                                <textarea class="form-control" id="description" name="description" rows="3"><%= quiz.description %></textarea>
+                            </div>
+
+                            <% quiz.Questions.forEach((question, questionIndex) => { %>
+                                <div class="border rounded mb-4">
+                                    <h5>Pytanie <%= questionIndex + 1 %></h5>
+                                    <input type="hidden" name="questions[<%= questionIndex %>][id]" value="<%= question.id %>">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" name="questions[<%= questionIndex %>][text]" value="<%= question.question_text %>" required>
+                                    </div>
+
+                                    <% question.Answers.forEach((answer, answerIndex) => { %>
+                                        <div class="form-check">
+                                            <input 
+                                                type="radio" 
+                                                name="questions[<%= questionIndex %>][correct_answer]" 
+                                                value="<%= answer.id %>" 
+                                                class="form-check-input"
+                                                <%= answer.is_correct ? "checked" : "" %>>
+                                            <label class="form-check-label">
+                                                <input 
+                                                    type="text" 
+                                                    class="form-control d-inline w-75" 
+                                                    name="questions[<%= questionIndex %>][answers][<%= answerIndex %>][text]" 
+                                                    value="<%= answer.answer_text %>" 
+                                                    required>
+                                            </label>
+                                            <input type="hidden" name="questions[<%= questionIndex %>][answers][<%= answerIndex %>][id]" value="<%= answer.id %>">
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            <% }) %>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Zapisz Zmiany</button>
+                                <a href="/quizzes" class="btn btn-secondary">Anuluj</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>

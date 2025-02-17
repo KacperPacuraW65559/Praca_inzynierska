@@ -1,0 +1,59 @@
+<%- include("../partials/head", { title: "Szczegóły Użytkownika" }) %>
+<body>
+    <%- include("../partials/navbar", { user }) %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="text-center text-primary mb-4">Szczegóły Użytkownika</h3>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th class="w-50 text-white">Atrybut</th>
+                                    <th class="text-white">Wartość</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Imię i Nazwisko</strong></td>
+                                    <td><%= viewUser.name %> <%= viewUser.surname %></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td><%= viewUser.email %></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rola</strong></td>
+                                    <td><%= viewUser.role %></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adres</strong></td>
+                                    <td><%= viewUser.address || "-" %></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Wiek</strong></td>
+                                    <td><%= viewUser.age || "-" %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="text-center mt-3">
+                            <a href="/admin/users" class="btn btn-secondary">Powrót do Listy Użytkowników</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
+    crossorigin="anonymous"></script>
+    
+</body>
+</html>
