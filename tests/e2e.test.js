@@ -10,11 +10,11 @@ async function registerUser() {
     let driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
 
     try {
-        // 1️. Otwórz stronę rejestracji
+        // 1. Otwórz stronę rejestracji
         await driver.get("http://localhost:3010/register");
         console.log("1. Strona rejestracji otwarta");
 
-        // 2️. Wypełnij formularz rejestracji
+        // 2. Wypełnij formularz rejestracji
         const uniqueEmail = `nowy${Date.now()}@example.com`;
         await driver.findElement(By.name("name")).sendKeys("Nowy");
         await driver.findElement(By.name("surname")).sendKeys("Użytkownik");
@@ -23,7 +23,7 @@ async function registerUser() {
         await driver.findElement(By.name("confirmPassword")).sendKeys("test123");
         await driver.findElement(By.name("age")).sendKeys(20);
 
-        // 3️. Kliknij "Zarejestruj się"
+        // 3. Kliknij "Zarejestruj się"
         await driver.findElement(By.css("button[type='submit']")).click();
         await driver.wait(until.urlContains("/dashboard"), 5000);
         console.log("2. Rejestracja zakończona, przekierowanie do dashboardu");
