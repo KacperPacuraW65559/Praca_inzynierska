@@ -6,6 +6,6 @@
 <b>Po pierwszym uruchomieniu:</b> Zakomentować cały plik controllers.js <br>
 <b>Port aplikacji:</b> http://localhost:3010/
 <b>Biblioteki testów:</b> npm install supertest jest selenium-webdriver chromedriver glob@latest <br>
-<b>Baza danych:</b> MySQL (uruchomienie serwera przez XAMPP, moduły mysql i apache) <br>
+<b>Baza danych:</b> MySQL (uruchomienie serwera przez XAMPP, moduły MySQL i Apache) <br>
 <b>Zarządzanie bazą:</b> phpMyAdmin <br>
 Dodatkowo załączony folder zip z pracą.
