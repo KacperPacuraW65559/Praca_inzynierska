@@ -1,0 +1,904 @@
+
+body {
+    animation: fadeIn 0.5s ease-in-out;
+    padding: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Struktura strony */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.homepage-logo {
+    max-width: 300px;
+    height: auto;
+}
+
+.footer {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #bdbdbd;
+    transition: color 0.2s ease-in-out;
+}
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-contact li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: #ffc107;
+}
+
+.footer-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.navbar {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #f8f9fa;
+    transition: color 0.2s ease-in-out;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
+.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #ffc107 !important;
+}
+.navbar-nav .nav-link i {
+    margin-right: 8px;
+}
+
+.register-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+
+/* Karty i buttony */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    height: 45px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-center p {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+.text-center a.text-primary {
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+.text-center a.text-primary:hover {
+    color: #0056b3;
+}
+
+/* Strony po logowaniu */
+.dashboard-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#clock, #calendar {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.bookmarks-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+/* Kurtsy */
+.courses-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.02);
+}
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.card-body p {
+    font-size: 0.9rem;
+}
+.btn-primary {
+    font-size: 1rem;
+    padding: 8px 12px;
+    font-weight: bold;
+}
+.btn-secondary {
+    font-size: 1rem;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.add-course-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.card-body h4 {
+    font-size: 1.4rem;
+}
+.form-control, .form-select {
+    height: 45px;
+    font-size: 1rem;
+}
+.btn-primary {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.course-details-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 2rem;
+}
+.list-group-item {
+    font-size: 1rem;
+}
+.btn-primary, .btn-outline-primary {
+    font-size: 1rem;
+    padding: 10px 15px;
+}
+
+.edit-course-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.card-body h3 {
+    font-size: 1.5rem;
+}
+.form-control, .form-select {
+    height: 45px;
+    font-size: 1rem;
+}
+.btn-primary {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.course-preview-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    font-size: 2rem;
+}
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.btn-primary, .btn-secondary {
+    font-size: 1rem;
+    padding: 10px 15px;
+}
+
+.courses-panel-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+h1 {
+    font-size: 2.2rem;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.02);
+}
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.card-body p {
+    font-size: 0.9rem;
+}
+.btn-success {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+}
+.btn-sm {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.my-courses-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.list-group-item {
+    font-size: 1rem;
+    padding: 15px;
+    transition: background-color 0.2s ease-in-out;
+}
+.list-group-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+h1, h3 {
+    font-weight: bold;
+}
+
+.teacher-courses-page {
+    background-color: #f8f9fa;
+    padding-bottom: 40px;
+}
+.list-group-item {
+    font-size: 1rem;
+    padding: 15px;
+    transition: background-color 0.2s ease-in-out;
+}
+.list-group-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Opinie */
+.feedback-page .list-group-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.feedback-page .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+.feedback-page h5 {
+    margin-bottom: 0.25rem;
+}
+.feedback-page .user-info {
+    font-size: 0.9rem;
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+.feedback-page .badge {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+}
+.feedback-page .btn-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.feedback-send-page .feedback-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.feedback-send-page .feedback-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.feedback-send-page .btn-primary {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.feedback-send-page .form-label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.feedback-user-list .feedback-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.feedback-user-list .feedback-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.feedback-user-list .btn-success {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.feedback-user-list .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.feedback-user-list .card-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-view-page .feedback-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.feedback-view-page .feedback-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.feedback-view-page .form-label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.feedback-view-page .btn {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.feedback-view-page .text-success {
+    font-weight: bold;
+}
+
+/* Lekcje */
+.lesson-add-page .lesson-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.lesson-add-page .lesson-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-add-page .form-label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.lesson-add-page .btn {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.lesson-edit-page {
+    background-color: #f8f9fa;
+}
+
+.lesson-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.lesson-card .form-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.auto-expand {
+    min-height: 40px;
+    resize: none;
+    overflow-y: hidden;
+    transition: height 0.2s ease-in-out;
+}
+
+.lesson-card button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 12px;
+}
+
+.lesson-card .btn-danger {
+    font-size: 14px;
+    padding: 6px;
+    width: 100%;
+}
+
+.lesson-card .btn-secondary {
+    font-size: 14px;
+    padding: 6px;
+    width: 100%;
+}
+
+.lesson-card button:hover,
+.lesson-card a:hover {
+    transform: scale(1.02);
+    transition: all 0.15s ease-in-out;
+}
+
+.course-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.btn-back {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    color: #0d6efd;
+    background-color: transparent;
+    border: 1px solid #0d6efd;
+    transition: all 0.3s ease-in-out;
+}
+.btn-back:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.lesson-actions-card {
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.2s ease-in-out;
+}
+.lesson-actions-card:hover {
+    transform: scale(1.02);
+}
+
+.example-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.example-description {
+    font-size: 14px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+button.btn:hover,
+a.btn:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.metronome-container {
+    max-width: 300px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+.metronome-container .btn {
+    width: 100px;
+    font-size: 0.9rem;
+}
+
+h3.text-primary {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* Profil */
+.profile-avatar {
+    font-size: 4rem;
+    color: #0d6efd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #e9ecef;
+    border-radius: 50%;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+.card-body {
+    padding: 1rem;
+}
+.card-footer {
+    background-color: #f8f9fa;
+    text-align: right;
+}
+
+.badge-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+
+#clock {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #555;
+}
+#calendar {
+    font-size: 1.6rem;
+    color: #555;
+}
+
+p {
+    white-space: pre-wrap;
+}
+
+/* formularze */
+form {
+    margin-top: 20px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+label.form-label {
+    font-weight: 600;
+    color: #34495e;
+}
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttony */
+button.btn, a.btn {
+    padding: .375rem .75rem;
+    margin: .25rem .125rem;
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #6c757d;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: background-color 0.2s ease-in-out;
+}
+button.btn:hover, a.btn:hover {
+    background-color: #5a6268;
+}
+button.btn:disabled, a.btn:disabled {
+    background-color: #ced4da;
+    cursor: not-allowed;
+}
+
+.img-thumbnail {
+    transition: transform 0.2s ease-in-out;
+}
+.img-thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+    font-size: 1rem;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn i {
+    font-size: 1.2rem;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545;
+    color: white;
+    transition: 0.2s;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.btn-lg {
+    font-size: 1rem;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bi-trash-fill {
+    font-size: 2.5rem;
+}
+
+/* Biblioteka */
+.chord-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.chord-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.chord-image {
+    max-height: 180px;
+    object-fit: cover;
+}
+.card-footer .btn {
+    margin-top: 5px;
+}
+.scale-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.scale-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+.scale-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Strona główna, navbar i footer */
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-divider {
+    margin: 8px 0;
+}
+
+.dropdown-item.text-danger {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #f8d7da;
+}
+
+.navbar {
+    background: linear-gradient(180deg, #0a1931, #185adb);
+    border-radius: 10px;
+}
+
+/* Obrazek strona główna */
+.hero-section {
+    background: url('/resources/images/hero-bg.jpg') no-repeat center center/cover;
+    padding: 5px 0;
+}
+
+img {
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+}
+
+/* Karty opinie karuzela */
+.testimonial-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 20px; 
+}
+.testimonial-card footer {
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #185adb;
+}
+
+.features-section i {
+    transition: transform 0.3s ease;
+}
+.features-section i:hover {
+    transform: scale(1.2);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #0a1931, #185adb);
+    color: #fff;
+    padding: 60px 0;
+    border-radius: 10px;
+}
+
+.footer {
+    background-color: #0a1931;
+    color: #f8f9fa;
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.footer .container {
+    padding-bottom: 1rem;
+}
+
+.footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.footer p {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer a.footer-link {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a.footer-link:hover {
+    color: #185adb;
+}
+
+.footer .text-center {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Napisanie buttony ten sam styl */
+button.btn:hover,
+a.btn:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-danger:hover,
+.btn-success:hover,
+.btn-outline-danger:hover,
+.btn-lg:hover,
+.btn-sm:hover,
+.admin-btn:hover,
+.quiz-btn:hover {
+    color: #fff !important;
+}
+
